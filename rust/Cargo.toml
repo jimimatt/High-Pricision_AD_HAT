@@ -1,0 +1,35 @@
+[package]
+name = "ads1263"
+version = "0.1.0"
+edition = "2024"
+authors = ["Matthias Telöken <matthias.teloeken@posteo.de>"]
+description = "ADS1263 32-bit ADC driver for Raspberry Pi"
+license = "MIT"
+repository = "https://github.com/jimimatt/High-Pricision_AD_HAT/tree/master/rust"
+keywords = ["adc", "ads1263", "raspberry-pi", "spi", "embedded"]
+categories = ["embedded", "hardware-support"]
+
+[lib]
+name = "ads1263"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ads1263-demo"
+path = "src/main.rs"
+
+[dependencies]
+rppal = "0.19"
+thiserror = "1.0"
+log = "0.4"
+
+[dev-dependencies]
+env_logger = "0.11"
+ctrlc = "3.4"
+
+[features]
+default = ["rpi"]
+rpi = []
+
+[profile.release]
+opt-level = 3
+lto = true
