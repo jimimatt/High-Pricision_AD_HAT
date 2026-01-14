@@ -35,7 +35,10 @@ int main(void)
     signal(SIGINT, Handler);
     
     printf("ADS1263 Demo \r\n");
-    DEV_Module_Init();
+    if (DEV_Module_Init() != 0) {
+        printf("DEV_Module_Init failed. Exiting.\r\n");
+        return 1;
+    }
 
     // 0 is singleChannel, 1 is diffChannel
     ADS1263_SetMode(0);
